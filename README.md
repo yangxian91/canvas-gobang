@@ -4,6 +4,7 @@
 根据慕课网教程，打的代码，稍有改动，可以很好的运行。
 
 //画黑白子  颜色渐变
+
 	function oneStep(i, j, me){
 		context.beginPath();
 		context.arc(left + i*size, left + j*size, pieceSize, 0, Math.PI*2);
