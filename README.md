@@ -1,32 +1,22 @@
 # canvas-gobang
 五子棋游戏
-function drawChess(){
-		context.strokeStyle = "#090513";
-		context.fillStyle = "#090513";
-		for (var i = 0; i < rowNum; i++) {
-			context.moveTo(left + i*size, 15);
-			context.lineTo(left + i*size, 435);
-			context.stroke();
-			context.moveTo(15, left + i*size);
-			context.lineTo(435, left + i*size);
-			context.stroke();
-			context.textAlign = "center";
-			context.textBaseline = "middle";
-			context.fillText(i, 5, left+i*size);
+
+根据慕课网教程，打的代码，稍有改动，可以很好的运行。
+
+//画黑白子  颜色渐变
+	function oneStep(i, j, me){
+		context.beginPath();
+		context.arc(left + i*size, left + j*size, pieceSize, 0, Math.PI*2);
+		context.closePath();
+		var gradient = context.createRadialGradient(left + i*size+2, left + j*size-2, pieceSize, left + i*size+2, left + j*size-2, 0);
+		if(me){
+			gradient.addColorStop(0, "#0a0a0a");
+			gradient.addColorStop(1, "#636766");
+		}else{
+			gradient.addColorStop(0, "#d1d1d1");
+			gradient.addColorStop(1, "#f9f9f9");
 		}
-		context.beginPath();
-		context.arc(left + 3*size, left + 3*size, smallsize, 0, Math.PI*2);
-		context.fill();
-		context.beginPath();
-		context.arc(left + 11*size, left + 11*size, smallsize, 0, Math.PI*2);
-		context.fill();
-		context.beginPath();
-		context.arc(left + 3*size, left + 11*size, smallsize, 0, Math.PI*2);
-		context.fill();
-		context.beginPath();
-		context.arc(left + 11*size, left + 3*size, smallsize, 0, Math.PI*2);
-		context.fill();
-		context.beginPath();
-		context.arc(left + 7*size, left + 7*size, smallsize, 0, Math.PI*2);
+		
+		context.fillStyle = gradient;
 		context.fill();
 	}
